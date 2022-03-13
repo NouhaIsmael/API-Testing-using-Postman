@@ -1,0 +1,981 @@
+{
+	"info": {
+		"_postman_id": "072c66cb-1f27-49b9-a9c4-bf9947230b6f",
+		"name": "Noha Trello Colletions (Trello Project )",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET request Folder",
+			"item": [
+				{
+					"name": "View newest Board created",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/boards/{{boardidni}}?key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{boardidni}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Viweing newest List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"List is viewed sucessfully \", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/lists/620d95b9d25bb46d7fb04c38?key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"lists",
+								"620d95b9d25bb46d7fb04c38"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the Card by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Card is veiwed by ID successfully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Checking if the Card ID number is as below \", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(\"620d96221389423474c629ab\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/cards/620d96221389423474c629ab?key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards",
+								"620d96221389423474c629ab"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the attachment card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Viewing the card attachment is successful\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Ensuring that the the attachment ID is as below\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(\"620d96a25ff65931c02bd124\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/cards/620d96221389423474c629ab/attachments/620d96a25ff65931c02bd124?key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards",
+								"620d96221389423474c629ab",
+								"attachments",
+								"620d96a25ff65931c02bd124"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the attachment card 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(\"620d973c07fdc6451739dd94\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that the second card attachment contains noha's card 2\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"noha's card 2\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/cards/620d973c07fdc6451739dd94?key={{keyni}}&token={{tokenni}}&name=noha's card 2",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards",
+								"620d973c07fdc6451739dd94"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								},
+								{
+									"key": "name",
+									"value": "noha's card 2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the Checklist on card 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/cards/{{card2idni}}/checklists?key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards",
+								"{{card2idni}}",
+								"checklists"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Checkitems on a Checklist on a card 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Checking if the Checklist item contains API course\", function () {\r",
+									"    var jsonArrayData = pm.response.json();\r",
+									"    pm.expect(jsonArrayData[0].name).to.eql(\"Studying API course\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/checklists/{{Checklistcard2ni}}/checkItems?key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"checklists",
+								"{{Checklistcard2ni}}",
+								"checkItems"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Checkitems 2 on a Checklist on card 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Checking if the Checklist item contains Selenium course\", function () {\r",
+									"    var jsonArrayData = pm.response.json();\r",
+									"    pm.expect(jsonArrayData[1].name).to.eql(\"Studying Selenium Course\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/checklists/{{Checklistcard2ni}}/checkItems?key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"checklists",
+								"{{Checklistcard2ni}}",
+								"checkItems"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Viewing different types of the GET requests and their test results such as ( View the created new Board, View the created new List inside Board , View the created new Card inside List, etc. )"
+		},
+		{
+			"name": "POST request Folder",
+			"item": [
+				{
+					"name": "Create Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Board Created Sucessfully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Board name is NouhaIsmael\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"NouhaIsmael\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/boards/?name=NohaTrello&key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"boards",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "NohaTrello"
+								},
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a new list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"List is created sucessfully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the list named as BoardList\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"BasbosaList\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/lists?name=BasbosaList&idBoard=620d94128568fd5511e37397&key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"lists"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "BasbosaList"
+								},
+								{
+									"key": "idBoard",
+									"value": "620d94128568fd5511e37397"
+								},
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adding new card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Card is added sucssfully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/cards?idList=620d95b9d25bb46d7fb04c38&key={{keyni}}&token={{tokenni}}&name=nouha's card",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "620d95b9d25bb46d7fb04c38"
+								},
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								},
+								{
+									"key": "name",
+									"value": "nouha's card"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adding Attachments on Card",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/cards/620d96221389423474c629ab/attachments?key={{keyni}}&token={{tokenni}}&url=https://www.demoblaze.com/&name=Product Store",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards",
+								"620d96221389423474c629ab",
+								"attachments"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								},
+								{
+									"key": "url",
+									"value": "https://www.demoblaze.com/"
+								},
+								{
+									"key": "name",
+									"value": "Product Store"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adding New Card 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/cards?idList=620d95b9d25bb46d7fb04c38&key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "620d95b9d25bb46d7fb04c38"
+								},
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Checklist on a Card 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/cards/{{card2idni}}/checklists?key={{keyni}}&token={{tokenni}}&name=Work To Be Done",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards",
+								"{{card2idni}}",
+								"checklists"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								},
+								{
+									"key": "name",
+									"value": "Work To Be Done"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Checkitem on Checklist on card 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/checklists/{{Checklistcard2ni}}/checkItems?name=Studying API course&checked=true&key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"checklists",
+								"{{Checklistcard2ni}}",
+								"checkItems"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Studying API course"
+								},
+								{
+									"key": "checked",
+									"value": "true"
+								},
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Checkitem 2 on Checklist on card 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/checklists/{{Checklistcard2ni}}/checkItems?name=Studying Selenium Course&checked=false&key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"checklists",
+								"{{Checklistcard2ni}}",
+								"checkItems"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Studying Selenium Course"
+								},
+								{
+									"key": "checked",
+									"value": "false"
+								},
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Creating different types of the POST requests mentioned in the documentation of Trello Developer such as ( Creating new Board, Creating new List inside Board , Creating new Card inside List, etc. )"
+		},
+		{
+			"name": "PUT request Folder",
+			"item": [
+				{
+					"name": "Editingg the name of the list",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"620d072a4c92d21997125b51\",\r\n    \"name\": \"noha List\",\r\n    \"closed\": false,\r\n    \"idBoard\": \"620d03f93cc7434f8de4ca20\",\r\n    \"pos\": 8192,\r\n    \"limits\": {}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/lists/620d072a4c92d21997125b51?key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"lists",
+								"620d072a4c92d21997125b51"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating Card 2 by Name",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"attachments\": [],\r\n    \"id\": \"620d973c07fdc6451739dd94\",\r\n    \"badges\": {\r\n        \"attachmentsByType\": {\r\n            \"trello\": {\r\n                \"board\": 0,\r\n                \"card\": 0\r\n            }\r\n        },\r\n        \"location\": false,\r\n        \"votes\": 0,\r\n        \"viewingMemberVoted\": false,\r\n        \"subscribed\": false,\r\n        \"fogbugz\": \"\",\r\n        \"checkItems\": 0,\r\n        \"checkItemsChecked\": 0,\r\n        \"checkItemsEarliestDue\": null,\r\n        \"comments\": 0,\r\n        \"attachments\": 0,\r\n        \"description\": false,\r\n        \"due\": null,\r\n        \"dueComplete\": false,\r\n        \"start\": null\r\n    },\r\n    \"checkItemStates\": [],\r\n    \"closed\": false,\r\n    \"dueComplete\": false,\r\n    \"dateLastActivity\": \"2022-02-17T00:30:52.133Z\",\r\n    \"desc\": \"\",\r\n    \"descData\": {\r\n        \"emoji\": {}\r\n    },\r\n    \"due\": null,\r\n    \"dueReminder\": null,\r\n    \"email\": null,\r\n    \"idBoard\": \"620d94128568fd5511e37397\",\r\n    \"idChecklists\": [],\r\n    \"idList\": \"620d95b9d25bb46d7fb04c38\",\r\n    \"idMembers\": [],\r\n    \"idMembersVoted\": [],\r\n    \"idShort\": 2,\r\n    \"idAttachmentCover\": null,\r\n    \"labels\": [],\r\n    \"idLabels\": [],\r\n    \"manualCoverAttachment\": false,\r\n    \"name\": \"noha's card 2\",\r\n    \"pos\": 32768,\r\n    \"shortLink\": \"GGW7bAR1\",\r\n    \"shortUrl\": \"https://trello.com/c/GGW7bAR1\",\r\n    \"start\": null,\r\n    \"subscribed\": false,\r\n    \"url\": \"https://trello.com/c/GGW7bAR1/2--\",\r\n    \"cover\": {\r\n        \"idAttachment\": null,\r\n        \"color\": null,\r\n        \"idUploadedBackground\": null,\r\n        \"size\": \"normal\",\r\n        \"brightness\": \"dark\",\r\n        \"idPlugin\": null\r\n    },\r\n    \"isTemplate\": false,\r\n    \"cardRole\": null,\r\n    \"stickers\": [],\r\n    \"limits\": {}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/cards/620d973c07fdc6451739dd94?key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards",
+								"620d973c07fdc6451739dd94"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Updating existing data using PUT request such as editing the list name or updating Card 2 name."
+		},
+		{
+			"name": "DELETE request Folder",
+			"item": [
+				{
+					"name": "Deleting borad name",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/boards/620d0479227ae2185b480c7a?key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"boards",
+								"620d0479227ae2185b480c7a"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleing the newly added Card",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/cards/620d09e9f17c1c7934f13542?key={{keyni}}&token={{tokenni}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards",
+								"620d09e9f17c1c7934f13542"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{keyni}}"
+								},
+								{
+									"key": "token",
+									"value": "{{tokenni}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Deleting a certain feature that was added before using DELETE request such as Deleting board name or Deleting newly added card."
+		}
+	]
+}
